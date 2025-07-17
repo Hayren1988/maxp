@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaxPneus.com.br - Pneus Premium com Ofertas Imperdíveis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0055A4;
+            --secondary: #333333;
+            --accent: #F5F7FA;
+            --red-accent: #E30613;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .top-bar {
+            background-color: var(--secondary);
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .search-bar {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+        }
+        
+        .nav-link {
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .hero-slide {
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .brand-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            background: white;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-card {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background-color: var(--accent);
+        }
+        
+        .payment-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
+        }
+        
+        .checkout-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            animation: modalAppear 0.5s ease;
+        }
+        
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pix-payment {
+            background-color: #32BCAD;
+            color: white;
+        }
+        
+        .creditcard-payment {
+            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+        }
+        
+        .footer-link {
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+        }
+        
+        .trust-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .trust-badge:hover {
+            transform: translateY(-5px);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Bar -->
+    <div class="top-bar py-2">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center mb-2 sm:mb-0">
+                <i class="fas fa-phone-alt mr-2"></i>
+                <span>Televendas: (11) 98048-4361</span>
+                <span class="mx-3 hidden sm:inline">|</span>
+                <i class="fas fa-clock mr-2"></i>
+                <span>Atendimento: Seg. à Sex. das 8h às 18h</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-envelope mr-2"></i>
+                <span>Email: higoor4455@gmail.com</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- Logo -->
+                <div class="mb-4 md:mb-0">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <i class="fas fa-tire"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Max<span class="text-blue-600">Pneus</span>.com.br</h1>
+                            <p class="text-xs md:text-sm text-gray-600">Pneus Premium com Ofertas Imperdíveis</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="w-full md:w-1/2 mb-4 md:mb-0">
+                    <div class="relative search-bar">
+                        <input type="text" placeholder="Busque por medida, aro, marca ou veículo" class="w-full py-3 px-6 rounded-full focus:outline-none">
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Icons -->
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-blue-600">
+                        <div class="text-center">
+                            <i class="fas fa-user text-xl"></i>
+                            <p class="text-xs mt-1">Minha Conta</p>
+                        </div>
+                    </a>
+                    <a href="#" class="text-gray-700 hover:text-blue-600">
+                        <div class="text-center">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <p class="text-xs mt-1">Carrinho</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-blue-600 py-3">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center space-x-1 md:space-x-8">
+                <a href="#" class="nav-link text-white font-medium py-2 px-4">Pneus por Medida</a>
+                <a href="#" class="nav-link text-white font-medium py-2 px-4">Pneus por Aro</a>
+                <a href="#" class="nav-link text-white font-medium py-2 px-4">Pneus por Marca</a>
+                <a href="#" class="nav-link text-white font-medium py-2 px-4">Rodas</a>
+                <a href="#" class="nav-link text-white font-medium py-2 px-4">Promoções</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Slider -->
+    <section class="relative">
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1626248801379-51a0f4b1d8c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+            <div class="container mx-auto px-4 text-white text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 fade-in">As Melhores Marcas com os Melhores Preços</h2>
+                <p class="text-xl mb-6 max-w-2xl mx-auto fade-in">Encontre os pneus perfeitos para seu veículo com garantia de qualidade e entrega rápida</p>
+                <a href="#promotions" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 fade-in">VER OFERTAS</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Compre por Marca</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+                <div class="brand-card p-4 flex items-center justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Pirelli_logo.svg/800px-Pirelli_logo.svg.png" alt="Pirelli" class="h-10 sm:h-12">
+                </div>
+                
+                <div class="brand-card p-4 flex items-center justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Michelin_logo.svg/800px-Michelin_logo.svg.png" alt="Michelin" class="h-10 sm:h-12">
+                </div>
+                
+                <div class="brand-card p-4 flex items-center justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Goodyear_logo.svg/800px-Goodyear_logo.svg.png" alt="Goodyear" class="h-10 sm:h-12">
+                </div>
+                
+                <div class="brand-card p-4 flex items-center justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Continental_logo.svg/800px-Continental_logo.svg.png" alt="Continental" class="h-10 sm:h-12">
+                </div>
+                
+                <div class="brand-card p-4 flex items-center justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Bridgestone_logo.svg/800px-Bridgestone_logo.svg.png" alt="Bridgestone" class="h-10 sm:h-12">
+                </div>
+                
+                <div class="brand-card p-4 flex items-center justify-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Hankook_logo.svg/800px-Hankook_logo.svg.png" alt="Hankook" class="h-10 sm:h-12">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions Section -->
+    <section id="promotions" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Ofertas da Semana</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618889482923-38250401a84e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Pneu Pirelli" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">Pneu Aro 15 Pirelli P1 195/55R15</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-gray-600 text-sm">(142 avaliações)</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-blue-600">R$ 389,90</span>
+                            <p class="text-gray-600">ou 10x de R$ 38,99</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1 transition duration-300 buy-btn" data-product="Pneu Aro 15 Pirelli P1 195/55R15" data-price="389.90">
+                                Comprar
+                            </button>
+                            <a href="https://api.whatsapp.com/send?phone=11980484361&text=Olá!%20Tenho%20interesse%20em%20um%20pneu%20do%20site." class="whatsapp-btn text-white font-bold py-2 px-4 rounded flex-1 text-center">
+                                <i class="fab fa-whatsapp mr-2"></i>Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600736735095-9fad46e69857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Pneu Michelin" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">Pneu Aro 17 Michelin Primacy 4 225/45R17</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                            <span class="text-gray-600 text-sm">(217 avaliações)</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-blue-600">R$ 629,90</span>
+                            <p class="text-gray-600">ou 12x de R$ 52,49</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1 transition duration-300 buy-btn" data-product="Pneu Aro 17 Michelin Primacy 4 225/45R17" data-price="629.90">
+                                Comprar
+                            </button>
+                            <a href="https://api.whatsapp.com/send?phone=11980484361&text=Olá!%20Tenho%20interesse%20em%20um%20pneu%20do%20site." class="whatsapp-btn text-white font-bold py-2 px-4 rounded flex-1 text-center">
+                                <i class="fab fa-whatsapp mr-2"></i>Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Pneu Goodyear" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">Pneu Aro 16 Goodyear Efficient 205/55R16</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="text-gray-600 text-sm">(98 avaliações)</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-blue-600">R$ 459,90</span>
+                            <p class="text-gray-600">ou 10x de R$ 45,99</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1 transition duration-300 buy-btn" data-product="Pneu Aro 16 Goodyear Efficient 205/55R16" data-price="459.90">
+                                Comprar
+                            </button>
+                            <a href="https://api.whatsapp.com/send?phone=11980484361&text=Olá!%20Tenho%20interesse%20em%20um%20pneu%20do%20site." class="whatsapp-btn text-white font-bold py-2 px-4 rounded flex-1 text-center">
+                                <i class="fab fa-whatsapp mr-2"></i>Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Pneu Continental" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">Pneu Aro 14 Continental EcoContact 185/65R14</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-gray-600 text-sm">(156 avaliações)</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-blue-600">R$ 419,90</span>
+                            <p class="text-gray-600">ou 8x de R$ 52,49</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1 transition duration-300 buy-btn" data-product="Pneu Aro 14 Continental EcoContact 185/65R14" data-price="419.90">
+                                Comprar
+                            </button>
+                            <a href="https://api.whatsapp.com/send?phone=11980484361&text=Olá!%20Tenho%20interesse%20em%20um%20pneu%20do%20site." class="whatsapp-btn text-white font-bold py-2 px-4 rounded flex-1 text-center">
+                                <i class="fab fa-whatsapp mr-2"></i>Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1603827457577-609e6f42a45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Pneu Bridgestone" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">Pneu Aro 18 Bridgestone Dueler H/T 235/60R18</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-gray-600 text-sm">(189 avaliações)</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-blue-600">R$ 689,90</span>
+                            <p class="text-gray-600">ou 12x de R$ 57,49</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1 transition duration-300 buy-btn" data-product="Pneu Aro 18 Bridgestone Dueler H/T 235/60R18" data-price="689.90">
+                                Comprar
+                            </button>
+                            <a href="https://api.whatsapp.com/send?phone=11980484361&text=Olá!%20Tenho%20interesse%20em%20um%20pneu%20do%20site." class="whatsapp-btn text-white font-bold py-2 px-4 rounded flex-1 text-center">
+                                <i class="fab fa-whatsapp mr-2"></i>Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580274437635-89b4d8f756d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Pneu Hankook" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">Pneu Aro 16 Hankook Kinergy 4S2 205/55R16</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="text-gray-600 text-sm">(102 avaliações)</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-blue-600">R$ 389,90</span>
+                            <p class="text-gray-600">ou 10x de R$ 38,99</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1 transition duration-300 buy-btn" data-product="Pneu Aro 16 Hankook Kinergy 4S2 205/55R16" data-price="389.90">
+                                Comprar
+                            </button>
+                            <a href="https://api.whatsapp.com/send?phone=11980484361&text=Olá!%20Tenho%20interesse%20em%20um%20pneu%20do%20site." class="whatsapp-btn text-white font-bold py-2 px-4 rounded flex-1 text-center">
+                                <i class="fab fa-whatsapp mr-2"></i>Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Pneu Yokohama" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">Pneu Aro 15 Yokohama BluEarth 175/65R15</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </span>
+                            <span class="text-gray-600 text-sm">(134 avaliações)</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-blue-600">R$ 349,90</span>
+                            <p class="text-gray-600">ou 8x de R$ 43,74</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1 transition duration-300 buy-btn" data-product="Pneu Aro 15 Yokohama BluEarth 175/65R15" data-price="349.90">
+                                Comprar
+                            </button>
+                            <a href="https://api.whatsapp.com/send?phone=11980484361&text=Olá!%20Tenho%20interesse%20em%20um%20pneu%20do%20site." class="whatsapp-btn text-white font-bold py-2 px-4 rounded flex-1 text-center">
+                                <i class="fab fa-whatsapp mr-2"></i>Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="h-48 bg-gray-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1618889482923-38250401a84e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Pneu Dunlop" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-lg mb-2">Pneu Aro 17 Dunlop SP Sport 245/45R17</h3>
+                        <div class="flex items-center mb-3">
+                            <span class="text-yellow-400 mr-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                            <span class="text-gray-600 text-sm">(89 avaliações)</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold text-blue-600">R$ 539,90</span>
+                            <p class="text-gray-600">ou 10x de R$ 53,99</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex-1 transition duration-300 buy-btn" data-product="Pneu Aro 17 Dunlop SP Sport 245/45R17" data-price="539.90">
+                                Comprar
+                            </button>
+                            <a href="https://api.whatsapp.com/send?phone=11980484361&text=Olá!%20Tenho%20interesse%20em%20um%20pneu%20do%20site." class="whatsapp-btn text-white font-bold py-2 px-4 rounded flex-1 text-center">
+                                <i class="fab fa-whatsapp mr-2"></i>Consultar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Pagamento Facilitado e Seguro</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="payment-card bg-white p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-credit-card text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Cartão de Crédito</h3>
+                    <p class="text-gray-600">Parcele em até 12x sem juros</p>
+                </div>
+                
+                <div class="payment-card bg-white p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-barcode text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Boleto Bancário</h3>
+                    <p class="text-gray-600">Desconto de 5% à vista</p>
+                </div>
+                
+                <div class="payment-card bg-white p-6 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-qrcode text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pix</h3>
+                    <p class="text-gray-600">Pagamento instantâneo com 5% OFF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Nossos Diferenciais</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="trust-badge text-center p-6">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-truck text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Entrega Rápida e Segura</h3>
+                    <p class="text-gray-600">Entregamos em todo o Brasil em até 5 dias úteis com rastreamento completo</p>
+                </div>
+                
+                <div class="trust-badge text-center p-6">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Compra 100% Segura</h3>
+                    <p class="text-gray-600">Site protegido com criptografia SSL e garantia de satisfação</p>
+                </div>
+                
+                <div class="trust-badge text-center p-6">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Produtos com Garantia</h3>
+                    <p class="text-gray-600">Todos os pneus possuem garantia do fabricante e certificado de qualidade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Institucional</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Sobre a MaxPneus</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Nossas Lojas</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Trabalhe Conosco</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Termos de Uso</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Atendimento</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Central de Ajuda</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Perguntas Frequentes</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Trocas e Devoluções</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Entregas e Prazos</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Formas de Pagamento</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Minha Conta</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Meus Pedidos</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Meus Dados</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Meus Endereços</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Meus Cupons</a></li>
+                        <li><a href="#" class="footer-link text-gray-400 hover:text-white">Sair</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">MaxPneus.com.br</h3>
+                    <p class="text-gray-400 mb-4">Oferecendo os melhores pneus com qualidade, preço justo e entrega rápida para todo o Brasil.</p>
+                    <div class="flex items-center text-gray-400 mb-2">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span>higoor4455@gmail.com</span>
+                    </div>
+                    <div class="flex items-center text-gray-400">
+                        <i class="fas fa-phone-alt mr-2"></i>
+                        <span>(11) 98048-4361</span>
+                    </div>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 MaxPneus.com.br. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="checkout-modal">
+        <div class="container mx-auto px-4 py-16">
+            <div class="max-w-4xl mx-auto modal-content">
+                <div class="p-6 border-b flex justify-between items-center">
+                    <h2 class="text-2xl font-bold">Finalizar Compra</h2>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="checkout-form" class="p-6">
+                    <h3 class="text-xl font-bold mb-6">Informações Pessoais</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="email">E-mail</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="cpf">CPF</label>
+                            <input type="text" id="cpf" name="cpf" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2" for="address">Endereço Completo</label>
+                        <input type="text" id="address" name="address" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="city">Cidade</label>
+                            <input type="text" id="city" name="city" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="state">Estado</label>
+                            <select id="state" name="state" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                                <option value="">Selecione</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <!-- Outros estados -->
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 mb-2" for="zip">CEP</label>
+                            <input type="text" id="zip" name="zip" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold mb-6">Método de Pagamento</h3>
+                    
+                    <div class="mb-8">
+                        <div class="flex flex-col gap-4 mb-6">
+                            <div class="pix-payment flex items-center p-4 rounded-lg cursor-pointer payment-method" data-method="pix">
+                                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-qrcode text-2xl text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">PIX</h4>
+                                    <p class="text-sm">Pagamento instantâneo com 5% de desconto</p>
+                                </div>
+                            </div>
+                            
+                            <div class="creditcard-payment flex items-center p-4 rounded-lg cursor-pointer payment-method" data-method="creditcard">
+                                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-credit-card text-2xl text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Cartão de Crédito</h4>
+                                    <p class="text-sm">Promoção especial para pneus de caminhões e carros</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Detalhes do PIX -->
+                        <div id="pix-details" class="mt-6 p-4 bg-green-50 rounded-lg">
+                            <h4 class="font-bold text-lg mb-2">Pagamento via PIX</h4>
+                            <p class="mb-4">Use a chave PIX abaixo para realizar o pagamento:</p>
+                            
+                            <div class="flex flex-col md:flex-row items-start mb-4">
+                                <div class="bg-white p-3 rounded-lg mb-4 md:mb-0 md:mr-6">
+                                    <div class="bg-gray-200 border-2 border-dashed rounded-xl w-48 h-48 flex items-center justify-center text-gray-500">
+                                        QR Code
+                                    </div>
+                                </div>
+                                
+                                <div class="flex-1">
+                                    <div class="mb-4">
+                                        <p class="font-bold mb-1">Chave PIX:</p>
+                                        <p class="text-lg bg-white p-3 rounded border border-green-300 font-mono">12a3cc51-fe09-4b31-9777-038c4943c76f</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <p class="font-bold mb-1">Beneficiário:</p>
+                                        <p class="text-lg bg-white p-3 rounded border border-green-300">Higor Oliveira Leite</p>
+                                    </div>
+                                    
+                                    <p class="text-sm mt-4 bg-yellow-50 p-2 rounded">Após o pagamento, seu pedido será processado automaticamente em até 15 minutos</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-800 text-white p-4 rounded-lg">
+                                <p class="font-bold mb-2">Código PIX Copia e Cola:</p>
+                                <p class="text-sm font-mono break-words">00020101021126580014BR.GOV.BCB.PIX013612a3cc51-fe09-4b31-9777-038c4943c76f5204000053039865802BR5920HIGOR OLIVEIRA LEITE6008SAOPAULO61080132305062070503***6304519C</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Detalhes do Cartão de Crédito -->
+                        <div id="creditcard-details" class="mt-6 p-4 bg-purple-50 rounded-lg hidden">
+                            <h4 class="font-bold text-lg mb-4">Pagamento com Cartão de Crédito</h4>
+                            <p class="mb-4">Aproveite nossa promoção especial para pneus de caminhões e carros!</p>
+                            <a href="https://pay.infinitepay.io/higor-oliveira-leite/VC1DLUMtUg-2xk4nriUuB-450,00" class="block w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 text-center mb-4">
+                                PAGAR COM CARTÃO DE CRÉDITO
+                            </a>
+                            <p class="text-sm text-center text-purple-700">Você será redirecionado para nosso parceiro de pagamentos InfinitePay</p>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                        FINALIZAR COMPRA
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="checkout-modal hidden">
+        <div class="container mx-auto px-4 py-16">
+            <div class="max-w-md mx-auto modal-content">
+                <div class="p-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-check text-green-600 text-2xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-4">Compra Finalizada!</h2>
+                        <p class="text-gray-600 mb-6">Seu pagamento está sendo processado. Aguarde a aprovação para envio do produto.</p>
+                        <button id="close-success" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                            Fechar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fade-in animation on scroll
+        function fadeInOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('appear');
+                }
+            });
+        }
+        
+        // Initialize fade-in on scroll
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+        
+        // Modal functionality
+        const checkoutModal = document.getElementById('checkout-modal');
+        const successModal = document.getElementById('success-modal');
+        const closeModal = document.getElementById('close-modal');
+        const closeSuccess = document.getElementById('close-success');
+        const buyButtons = document.querySelectorAll('.buy-btn');
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const checkoutForm = document.getElementById('checkout-form');
+        
+        // Open checkout modal when buy button is clicked
+        buyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                checkoutModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modals
+        closeModal.addEventListener('click', () => {
+            checkoutModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        closeSuccess.addEventListener('click', () => {
+            successModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === checkoutModal) {
+                checkoutModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === successModal) {
+                successModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Payment method selection
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => {
+                // Remove active class from all
+                paymentMethods.forEach(m => m.classList.remove('border-2', 'border-blue-500'));
+                // Add active class to clicked
+                method.classList.add('border-2', 'border-blue-500');
+                
+                // Show selected payment details
+                const methodType = method.getAttribute('data-method');
+                document.getElementById('pix-details').classList.add('hidden');
+                document.getElementById('creditcard-details').classList.add('hidden');
+                
+                if (methodType === 'pix') {
+                    document.getElementById('pix-details').classList.remove('hidden');
+                } else if (methodType === 'creditcard') {
+                    document.getElementById('creditcard-details').classList.remove('hidden');
+                }
+            });
+        });
+        
+        // Form submission
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                zip: document.getElementById('zip').value,
+                cpf: document.getElementById('cpf').value,
+                paymentMethod: document.querySelector('.payment-method.border-2')?.getAttribute('data-method') || 'unknown',
+                timestamp: new Date().toISOString()
+            };
+            
+            // Send data via email (simulated)
+            const mailtoLink = `mailto:higoor4455@gmail.com?subject=Novo Pedido MaxPneus&body=Novo pedido recebido:%0D%0A%0D%0A${JSON.stringify(formData, null, 2)}`;
+            window.location.href = mailtoLink;
+            
+            // Show success modal
+            checkoutModal.style.display = 'none';
+            successModal.style.display = 'block';
+            
+            // Reset form
+            checkoutForm.reset();
+            document.getElementById('pix-details').classList.add('hidden');
+            document.getElementById('creditcard-details').classList.add('hidden');
+            paymentMethods.forEach(m => m.classList.remove('border-2', 'border-blue-500'));
+        });
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set the first payment method as active
+            if (paymentMethods.length > 0) {
+                paymentMethods[0].click();
+            }
+        });
+    </script>
+</body>
+</html>
